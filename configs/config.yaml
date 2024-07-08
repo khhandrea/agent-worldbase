@@ -1,0 +1,21 @@
+model:
+  _target_: models.MLPClassifier
+  encoder:
+    _target_: networks.MLPEncoder
+
+trainer:
+  _target_: lightning.Trainer
+  accelerator: gpu
+  devices: [0]
+  min_epochs: 1
+  max_epochs: 5
+
+logger:
+  _target_: lightning.pytorch.loggers.TensorBoardLogger
+  save_dir: logs/
+  name: hello-rl
+  log_graph: True
+
+dataset:
+  _target_: datasets.MNISTDataModule
+  data_dir: "/data/khhandrea/mnist/"
