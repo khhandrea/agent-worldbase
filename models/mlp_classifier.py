@@ -1,10 +1,12 @@
+from typing import Optional
+
 from lightning import LightningModule
 import torch
 from torch import nn, optim
 from torch.nn.functional import cross_entropy
 
 class MLPClassifier(LightningModule):
-    def __init__(self, encoder: nn.Module):
+    def __init__(self, encoder: nn.Module, *, name: Optional[str]=None):
         super().__init__()
         self._encoder = encoder
 

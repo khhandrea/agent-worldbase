@@ -1,21 +1,13 @@
-model:
-  _target_: models.MLPClassifier
-  encoder:
-    _target_: networks.MLPEncoder
+defaults:
+  - _self_
+  - trainer: default
+  - model: mlp-classifier
+  - dataset: mnist
+  - logger: tensorboard
+  - hydra: default
 
-trainer:
-  _target_: lightning.Trainer
-  accelerator: gpu
-  devices: [0]
-  min_epochs: 1
-  max_epochs: 5
+seed: 42
 
-logger:
-  _target_: lightning.pytorch.loggers.TensorBoardLogger
-  save_dir: logs/
-  name: hello-rl
-  log_graph: True
-
-dataset:
-  _target_: datasets.MNISTDataModule
-  data_dir: "/data/khhandrea/mnist/"
+# Output directory
+root_dir: ${model.name}/${dataset.name}
+run_name: ${now:%y-%m-%dT%H:%M:%S}_${seed}

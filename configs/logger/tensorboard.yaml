@@ -1,0 +1,5 @@
+_target_: lightning.pytorch.loggers.TensorBoardLogger
+save_dir: logs/
+name: ${root_dir}
+version: ${run_name}
+log_graph: True

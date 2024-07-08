@@ -10,8 +10,8 @@ def main(cfg: DictConfig):
     set_float32_matmul_precision("high")
 
     model = instantiate(cfg.model)
-    trainer = instantiate(cfg.trainer)
     dataset = instantiate(cfg.dataset)
+    trainer = instantiate(cfg.trainer, logger=cfg.logger)
 
     trainer.fit(model, dataset)
 

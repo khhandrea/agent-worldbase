@@ -1,0 +1,3 @@
+_target_: datasets.MNISTDataModule
+name: mnist
+data_dir: "/data/khhandrea/mnist/"

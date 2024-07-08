@@ -1,9 +1,11 @@
+from typing import Optional
+
 from lightning import LightningModule
 from torch import nn, optim
 from torch.nn.functional import mse_loss
 
 class AutoEncoder(LightningModule):
-    def __init__(self, encoder: nn.Module, decoder: nn.Module):
+    def __init__(self, encoder: nn.Module, decoder: nn.Module, *, name: Optional[str]=None):
         super().__init__()
         self._encoder = encoder
         self._decoder = decoder

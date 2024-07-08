@@ -1,14 +1,14 @@
+from typing import Optional
 from pathlib import Path
 
 from lightning import LightningDataModule
-from lightning.pytorch.utilities.types import EVAL_DATALOADERS
 from torch import Generator
 from torch.utils.data import random_split, DataLoader
 from torchvision import transforms
 from torchvision.datasets import MNIST
 
 class MNISTDataModule(LightningDataModule):
-    def __init__(self, data_dir: str | Path):
+    def __init__(self, data_dir: str | Path, *, name: Optional[str]=None):
         super().__init__()
         self._data_dir = data_dir
         self._transform = transforms.Compose([
