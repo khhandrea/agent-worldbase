@@ -1,0 +1,20 @@
+from lightning import LightningModule
+from torch import nn, optim
+from torch.nn.functional import cross_entropy
+
+class MLPClassifier(LightningModule):
+    def __init__(self, encoder: nn.Module):
+        super().__init__()
+        self._encoder = encoder
+
+    def training_step(self, batch):
+        x, y = batch
+        x = x.view(x.size(0), -1)
+        y_pred = self._encoder(x)
+        loss = cross_entropy(y_pred, y)
+        self.log("train_loss", loss)
+        return loss
+
+    def configure_optimizers(self):
+        optimizer = optim.Adam(self.parameters(), lr=1e-4)
+        return optimizer
