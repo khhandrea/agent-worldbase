@@ -2,6 +2,9 @@
 - Reinforcement learning framework with lightning trainer interface
 - Want to be integrated with Trainer someday
 
+## TODO
+- save wandb at same file or split
+
 ## Directories
 - `lightning-sample`: lightning tutorial
 - `lightning-rl`: lightning-RL implementaion
