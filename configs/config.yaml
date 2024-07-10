@@ -10,4 +10,4 @@ seed: 42
 
 # Output directory
 root_dir: ${model.name}/${dataset.name}
-run_name: ${now:%y-%m-%dT%H:%M:%S}_${seed}
+run_name: ${now:%y-%m-%d_%H-%M-%S}_${seed}
