@@ -1,4 +1,4 @@
-_target_: models.MLPClassifier
+_target_: src.models.MLPClassifier
 name: mlp-classifier
 encoder:
-  _target_: networks.MLPEncoder
+  _target_: src.networks.MLPEncoder
